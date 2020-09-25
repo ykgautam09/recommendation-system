@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get NEWS Recommendation</title>
+</head>
+<body>
+    <div>
+        <div>
+            <form action="/" method="post" enctype="application/x-www-form-urlencoded">
+                <input name="title" type="text" placeholder="Enter News Headline" required>
+                <input type="number" name="number" placeholder="fill no of expected recommendations">
+                <button type="submit">Get Recommendations</button>
+            </form>
+        </div>
+        <div>
+            <ul>
+                {% if size>0 %}
+                    {% for i in titles %}
+                        <li>{{i}}</li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
