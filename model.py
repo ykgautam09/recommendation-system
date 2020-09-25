@@ -1,10 +1,15 @@
 import numpy as np
+import configparser
 
-BLOG_TITLE = "Jim Carrey Blasts 'Castrato' Adam Schiff And Democrats In New Artwork"
-PREDICTION_COUNT = 5
+config=configparser.ConfigParser()
 
-cosine_model = np.load('./cosine_model.npy', allow_pickle=True)
-data = np.load('./raw_data.npz', allow_pickle=True)
+BLOG_TITLE = config['DEFAULT']['BLOG_TITLE']
+PREDICTION_COUNT = int(config['DEFAULT']['PREDICTION_COUNT'])
+MODEL_PATH=config['DEFAULT']['MODEL_PATH']
+DATA_PATH=config['DEFAULT']['DATA_PATH']
+
+cosine_model = np.load(MODEL_PATH, allow_pickle=True)
+data = np.load(DATA_PATH, allow_pickle=True)
 
 
 def get_recommendation(blog, n):

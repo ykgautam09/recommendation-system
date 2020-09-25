@@ -3,10 +3,13 @@ import pandas as pd
 from sqlalchemy import create_engine
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import pairwise_distances
+import configparser
 
-CONNECTION_STRING = 'mysql+pymysql://root:@localhost/legalshala'
-TABLE_NAME = 'blog'
-COLUMN_NAMES = ['title']
+config=configparser.ConfigParser()
+
+CONNECTION_STRING = config['DEFAULT']['CONNECTION_STRING']
+TABLE_NAME = config['DEFAULT']['TABLE_NAME']
+COLUMN_NAMES = config['DEFAULT']['COLUMN_NAMES']
 
 
 def connect_db(connection_string):

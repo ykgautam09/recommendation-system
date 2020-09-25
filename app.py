@@ -1,11 +1,14 @@
-import numpy as np
 from flask import Flask, request, render_template, jsonify
 from model import get_recommendation
+import configparser
 
-DEFAULT_BLOG_TITLE = "Jim Carrey Blasts 'Castrato' Adam Schiff And Democrats In New Artwork"
-DEFAULT_RECOMMONDATION_COUNT = 5
-AS_API = True
+config=configparser.ConfigParser()
 app = Flask(__name__)
+
+DEFAULT_BLOG_TITLE = config['DEFAULT']['BLOG_TITLE']
+DEFAULT_RECOMMONDATION_COUNT = int(config['DEFAULT']['PREDICTION_COUNT'])
+AS_API = bool(config['DEFAULT']['AS_API'])
+
 
 
 @app.route('/')
