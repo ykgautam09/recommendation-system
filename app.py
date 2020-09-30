@@ -1,8 +1,9 @@
 from flask import Flask, request, render_template, jsonify
 from model import get_recommendation
-import configparser
+from configparser import ConfigParser
 
-config=configparser.ConfigParser()
+config=ConfigParser()
+config.read('./config.ini')
 app = Flask(__name__)
 
 DEFAULT_BLOG_TITLE = config['DEFAULT']['BLOG_TITLE']

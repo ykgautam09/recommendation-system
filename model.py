@@ -1,7 +1,8 @@
 import numpy as np
-import configparser
+from configparser import ConfigParser
 
-config=configparser.ConfigParser()
+config=ConfigParser()
+config.read('./config.ini')
 
 BLOG_TITLE = config['DEFAULT']['BLOG_TITLE']
 PREDICTION_COUNT = int(config['DEFAULT']['PREDICTION_COUNT'])
@@ -10,7 +11,6 @@ DATA_PATH=config['DEFAULT']['DATA_PATH']
 
 cosine_model = np.load(MODEL_PATH, allow_pickle=True)
 data = np.load(DATA_PATH, allow_pickle=True)
-
 
 def get_recommendation(blog, n):
     index = np.where(data['title'] == blog)[0]
